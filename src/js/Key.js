@@ -102,9 +102,6 @@ class Key {
             let start = document.getElementById('textarea').selectionStart;
             let end = document.getElementById('textarea').selectionEnd;
 
-            console.log('start' + start);
-            console.log('end' + end);
-
             if (start === length) {
                 if (e.code) {
                     document.getElementById('textarea').value += document.getElementById(e.code).textContent;
