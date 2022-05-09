@@ -149,7 +149,7 @@ class Keyboard {
                     this.changeText(this.data);
                     e.target.classList.add('pressed');
                 }
-            }
+            }            
         });
 
         this.keyboard.addEventListener('mousedown', (e) => {
@@ -161,6 +161,10 @@ class Keyboard {
                     this.textCase = 'upperCase';
                     this.changeText(this.data);
                 }
+            }
+
+            if (e.target.id === 'AltLeft' || e.target.id === 'ControlLeft') {
+                this.pressedKeys[e.target.id] = true;
             }
         });
 
@@ -174,6 +178,13 @@ class Keyboard {
                     this.changeText(this.data);
                 }
             }
+            
+            if ((this.pressedKeys['ControlLeft'] && e.target.id === 'AltLeft') || (this.pressedKeys['AltLeft'] && e.target.id === 'ControlLeft')) {
+                this.language = this.changeLang();
+                this.changeText(this.data);
+            }
+
+            this.pressedKeys = {};
         });
     }
 }
